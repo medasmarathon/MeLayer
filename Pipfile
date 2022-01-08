@@ -7,6 +7,7 @@ name = "pypi"
 medlayer = {editable = true, path = "."}
 
 [dev-packages]
+yapf = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,0 +1,2 @@
+class INode:
+  pass
