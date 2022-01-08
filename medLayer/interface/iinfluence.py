@@ -1,8 +1,12 @@
-from ..core.datatype import InfluenceDirection
-from inode import INode
+from enum import Enum
+
+
+class Event(Enum):
+  COEXISTING = "Coexisting"
+  FEED_FORWARD = "Feed Forward"
+  FEED_BACK = "Feed Back"
 
 
 class IInfluence:
-  direction: InfluenceDirection
-  fro_node: INode
-  to_node: INode
+  event: Event
+  coefficient: float
