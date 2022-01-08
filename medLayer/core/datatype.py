@@ -22,3 +22,12 @@ class Probability(float):
   def __truediv__(self, other: float):
     res = super(Probability, self).__truediv__(other)
     return self.__class__(min(1, max(res, 0)))
+
+
+class InfluenceDirection:
+  fro: int
+  to: int
+
+  def __init__(self, from_value, to_value) -> None:
+    self.fro = from_value
+    self.to = to_value
