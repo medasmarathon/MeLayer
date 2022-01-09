@@ -1,5 +1,5 @@
 from medLayer.core.datatype import Probability
-from medLayer.baselogic import Node
+from medLayer.base import Node
 
 # x = Probability(0.8)
 # y = Probability(0.3)

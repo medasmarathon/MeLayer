@@ -1,15 +1,9 @@
-from ..interface import INode
+from medLayer.interface.inode import INode
+from ..dataclass import Node
 
 
-class Node(INode):
+def say_yes(self: INode):
+  return 'Yes'
 
-  def __key(self):
-    return (self.name)
 
-  def __hash__(self):
-    return hash(self.__key())
-
-  def __eq__(self, other: "INode") -> bool:
-    if isinstance(other, INode):
-      return self.__key() == other.__key()
-    return NotImplementedError
+Node.say_yes = say_yes
