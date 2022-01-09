@@ -1,6 +1,6 @@
 from typing import List
-from ilayer import ILayer
-from iinteraction import IInteraction
+from .ilayer import ILayer
+from .iinteraction import IInteraction
 
 
 class IHost:

@@ -1,4 +1,4 @@
-from inode import INode
+from .inode import INode
 from typing import List
 
 
