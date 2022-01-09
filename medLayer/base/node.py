@@ -1,4 +1,4 @@
-from medLayer.interface.inode import INode
+from ..interface.inode import INode
 from ..dataclass import Node
 
 
