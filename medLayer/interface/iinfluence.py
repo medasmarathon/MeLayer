@@ -1,2 +1,0 @@
-class IInfluence:
-  power: float
