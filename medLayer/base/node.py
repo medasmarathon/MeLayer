@@ -1,8 +1,7 @@
-from ..interface.inode import INode
 from ..dataclass import Node
 
 
-def say_yes(self: INode):
+def say_yes(self: Node):
   return 'Yes'
 
 
