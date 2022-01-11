@@ -1,8 +1,8 @@
-from ..dataclass import Node
+from dataclasses import dataclass
+from ..interface import INode
+from .. import config
 
 
-def say_yes(self: Node):
-  return 'Yes'
-
-
-Node.say_yes = say_yes
+@dataclass
+class Node(INode):
+  pass
