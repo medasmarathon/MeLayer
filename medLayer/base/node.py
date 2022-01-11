@@ -1,7 +1,15 @@
-from dataclasses import dataclass
-from ..interface import INode
+from medLayer.interface import INode
 
 
-@dataclass
 class Node(INode):
-  pass
+
+  def __key(self):
+    return (self.name)
+
+  def __hash__(self):
+    return hash(self.__key())
+
+  def __eq__(self, other: "Node") -> bool:
+    if isinstance(other, Node):
+      return self.__key() == other.__key()
+    raise NotImplementedError

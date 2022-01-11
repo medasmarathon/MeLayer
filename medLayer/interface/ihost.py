@@ -1,8 +1,8 @@
 from typing import List
 from .ilayer import ILayer
-from .iinteraction import IInteraction
+from .irelation import IRelation
 
 
 class IHost:
   layers: List[ILayer]
-  interactions: List[IInteraction]
+  interactions: List[IRelation]
