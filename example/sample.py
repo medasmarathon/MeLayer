@@ -19,11 +19,10 @@ symptom.nodes.append(pain)
 fuo = Event("FUO")
 disease.nodes.append(fuo)
 
+impossible_event = Event("Impossible")
+
 fever_observed = Observation(fever, True)
 pain_observed = Observation(pain, False)
 
-result = calculate_event_probability(pain, human, [fever_observed])
+result = calculate_event_probability(impossible_event, human, [fever_observed])
 print(result)
-x = Probability(0.5)
-y = Probability(True)
-print(f"\n {x} {y}")
