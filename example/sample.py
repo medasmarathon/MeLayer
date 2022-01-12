@@ -1,6 +1,6 @@
 from medLayer.core.datatype import Probability
-from medLayer.base import Node
+from medLayer.base import Event
 
-x = Node()
+x = Event()
 x.name = "aaa"
 print(x == 5)

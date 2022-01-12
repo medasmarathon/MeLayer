@@ -1,4 +1,4 @@
-from medLayer.interface.irelation import IRelation
+from medLayer.core.interface.irelation import IRelation
 
 
 class CausalRelation(IRelation):
