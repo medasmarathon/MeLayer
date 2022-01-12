@@ -1,6 +1,12 @@
+from typing import Union
+
+
 class Probability(float):
 
-  def __new__(cls, value):
+  def __new__(cls, value: Union[bool, float]):
+    if type(value) is bool:
+      return super().__new__(cls, int(value))
+
     if value < 0:
       raise ValueError("probability must not be less than 0")
     if value > 1:

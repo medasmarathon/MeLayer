@@ -2,4 +2,8 @@ from medLayer.core.interface import IHost
 
 
 class Host(IHost):
-  pass
+
+  def __init__(self, name: str):
+    super().__init__()
+    self.name = name
+    self.layers = []

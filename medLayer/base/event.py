@@ -5,6 +5,10 @@ from medLayer.core.interface import INode
 class Event(INode):
   independent_prob: Probability
 
+  def __init__(self, name: str):
+    super().__init__()
+    self.name = name
+
   def __key(self):
     return (self.name)
 
