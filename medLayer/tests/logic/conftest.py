@@ -31,5 +31,5 @@ def events_for_layer_2():
 
 
 @pytest.fixture
-def sample_impossible_event():
+def impossible_event():
   return Event('Impossible')

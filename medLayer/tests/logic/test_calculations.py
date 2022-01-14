@@ -1,9 +1,14 @@
+from typing import List
 import pytest
+
+from medLayer.base.conceptlayer import ConceptLayer
+from medLayer.base.event import Event
+from medLayer.base.host import Host
 
 
 def test_calculate_event_probability(
-    human_host, conceptlayer_1, conceptlayer_2, events_for_layer_1, events_for_layer_2,
-    sample_impossible_event
+    human_host: Host, conceptlayer_1: ConceptLayer, conceptlayer_2: ConceptLayer,
+    events_for_layer_1: List[Event], events_for_layer_2: List[Event], impossible_event: Event
     ):
-  print(sample_impossible_event.name)
-  assert sample_impossible_event.name == "Impossible"
+  print(impossible_event.name)
+  assert impossible_event.name == "Impossible"
