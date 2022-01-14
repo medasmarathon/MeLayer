@@ -11,22 +11,22 @@ def human_host():
 
 
 @pytest.fixture
-def conceptlayer_1():
+def symptoms_layer():
   return ConceptLayer('Symptoms', 1)
 
 
 @pytest.fixture
-def conceptlayer_2():
+def disease_layer():
   return ConceptLayer('Disease', 2)
 
 
 @pytest.fixture
-def events_for_layer_1():
+def symptom_events():
   return [Event('Fever'), Event('Pain')]
 
 
 @pytest.fixture
-def events_for_layer_2():
+def disease_events():
   return [Event('FUO')]
 
 
