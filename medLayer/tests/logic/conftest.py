@@ -1,3 +1,4 @@
+from typing import List
 import pytest
 
 from medLayer.base.conceptlayer import ConceptLayer
@@ -33,3 +34,22 @@ def disease_events():
 @pytest.fixture(autouse=True)
 def impossible_event():
   return Event('Impossible')
+
+
+@pytest.fixture
+def add_layers_to_host(human_host: Host, symptoms_layer: ConceptLayer, disease_layer: ConceptLayer):
+  human_host.layers = [symptoms_layer, disease_layer]
+
+
+@pytest.fixture
+def add_events_to_layers(
+    symptoms_layer: ConceptLayer, disease_layer: ConceptLayer, symptom_events: List[Event],
+    disease_events: List[Event]
+    ):
+  symptoms_layer.nodes = symptom_events
+  disease_layer.nodes = disease_events
+
+
+@pytest.fixture
+def init_dataset(add_layers_to_host, add_events_to_layers):
+  pass

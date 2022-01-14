@@ -4,11 +4,36 @@ import pytest
 from medLayer.base.conceptlayer import ConceptLayer
 from medLayer.base.event import Event
 from medLayer.base.host import Host
+from medLayer.base.logic.calculations import event_observation_status, find_layer_of_event
+from medLayer.base.observations import Observation
 
 
-def test_calculate_event_probability(
-    human_host: Host, symptoms_layer: ConceptLayer, disease_layer: ConceptLayer,
+def test_event_observation_status():
+  # Arrange
+  event1 = Event("1")
+  event2 = Event("2")
+  event3 = Event("3")
+  ob1 = Observation(event1, True)
+  ob2 = Observation(event2, False)
+
+  # Assert
+  assert event_observation_status(event1, [ob1, ob2]) == True
+  assert event_observation_status(event2, [ob1, ob2]) == False
+  assert event_observation_status(event3, [ob1, ob2]) == None
+  assert event_observation_status(event1, []) == None
+
+
+def test_find_layer_of_event(
+    init_dataset, human_host: Host, symptoms_layer: ConceptLayer, disease_layer: ConceptLayer,
     symptom_events: List[Event], disease_events: List[Event], impossible_event: Event
     ):
+  # Assert
+  assert find_layer_of_event(human_host, symptom_events[0]) == symptoms_layer
+  assert find_layer_of_event(human_host, disease_events[0]) == disease_layer
+  assert find_layer_of_event(human_host, impossible_event) == None
+
+
+def test_calculate_event_probability(init_dataset, human_host: Host, impossible_event: Event):
   print(impossible_event.name)
+  assert len(human_host.layers) == 2
   assert impossible_event.name == "Impossible"
