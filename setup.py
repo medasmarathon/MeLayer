@@ -22,5 +22,5 @@ setup(
         ],
     packages=find_packages(exclude=['example*', '*constant*']),
     python_requires=">=3.6",
-    install_requires=['SQLAlchemy >= 1.4']
+    install_requires=[]
     )
