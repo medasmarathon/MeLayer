@@ -4,7 +4,7 @@ import pytest
 from medLayer.base.conceptlayer import ConceptLayer
 from medLayer.base.event import Event
 from medLayer.base.host import Host
-from medLayer.base.logic.calculations import event_observation_status, find_layer_of_event
+from medLayer.base.logic.calculations import calculate_event_probability, event_observation_status, find_layer_of_event
 from medLayer.base.observations import Observation
 
 
@@ -33,7 +33,7 @@ def test_find_layer_of_event(
   assert find_layer_of_event(human_host, impossible_event) == None
 
 
-def test_calculate_event_probability(init_dataset, human_host: Host, impossible_event: Event):
-  print(impossible_event.name)
-  assert len(human_host.layers) == 2
-  assert impossible_event.name == "Impossible"
+def test_calculate_event_probability__should_return_0(
+    init_dataset, human_host: Host, impossible_event: Event
+    ):
+  assert calculate_event_probability(impossible_event, human_host, []) == 0
