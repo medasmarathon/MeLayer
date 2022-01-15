@@ -1,2 +1,2 @@
-from .probability import Probability
+from .probabilityvalue import ProbabilityValue
 from .influencedirection import InfluenceDirection

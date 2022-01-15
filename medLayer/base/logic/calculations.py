@@ -3,21 +3,23 @@ from medLayer.base.event import Event
 from medLayer.base.host import Host
 from medLayer.base.interactions.coexisting_relation import CoexistingRelation
 from medLayer.base.observations import Observation
-from medLayer.core.datatype.probability import Probability
+from medLayer.core.datatype.probabilityvalue import ProbabilityValue
 from medLayer.core.interface.ilayer import ILayer
 from medLayer.core.interface.irelation import IRelation
 
 
 def calculate_event_probability(
     event: Event, host: Host, observations: List[Observation]
-    ) -> Probability:
+    ) -> ProbabilityValue:
+  # check event possible for host
   event_conceptLayer = find_layer_of_event(host, event)
   if event_conceptLayer is None:
-    return Probability(0)
+    return ProbabilityValue(0)
 
+  # check event has been observed
   obs_status = event_observation_status(event, observations)
   if obs_status is not None:
-    return Probability(obs_status)
+    return ProbabilityValue(obs_status)
 
   # find relations targeting events
   event_relations = find_relations_targeting_event(event, host)
@@ -25,7 +27,7 @@ def calculate_event_probability(
   # if no targeting relations -> return base event prob
   if len(event_relations) == 0:
     return event.independent_prob
-  return Probability(0)
+  return ProbabilityValue(0)
 
 
 def event_observation_status(event: Event, observations: List[Observation]) -> Union[bool, None]:

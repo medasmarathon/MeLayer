@@ -1,16 +1,16 @@
-from medLayer.core.datatype.probability import Probability
+from medLayer.core.datatype.probabilityvalue import ProbabilityValue
 from medLayer.core.interface import INode
 
 
 class Event(INode):
-  independent_prob: Probability = Probability(0)
+  independent_prob: ProbabilityValue = ProbabilityValue(0)
 
   def __init__(self, name: str):
     super().__init__()
     self.name = name
 
   def with_base_prob(self, prob: float):
-    self.independent_prob = Probability(prob)
+    self.independent_prob = ProbabilityValue(prob)
     return self
 
   def __key(self):

@@ -3,7 +3,7 @@ from medLayer.base.event import Event
 from medLayer.base.host import Host
 from medLayer.base.logic.calculations import calculate_event_probability
 from medLayer.base.observations import Observation
-from medLayer.core.datatype.probability import Probability
+from medLayer.core.datatype.probabilityvalue import ProbabilityValue
 
 human = Host("Human")
 disease = ConceptLayer('Disease', 2)

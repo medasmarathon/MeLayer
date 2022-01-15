@@ -1,7 +1,7 @@
 from typing import Union
 
 
-class Probability(float):
+class ProbabilityValue(float):
 
   def __new__(cls, value: Union[bool, float]):
     if type(value) is bool:
@@ -14,17 +14,17 @@ class Probability(float):
     return super().__new__(cls, value)
 
   def __add__(self, other: float):
-    res = super(Probability, self).__add__(other)
+    res = super(ProbabilityValue, self).__add__(other)
     return self.__class__(min(1, max(res, 0)))
 
   def __sub__(self, other: float):
-    res = super(Probability, self).__sub__(other)
+    res = super(ProbabilityValue, self).__sub__(other)
     return self.__class__(min(1, max(res, 0)))
 
   def __mul__(self, other: float):
-    res = super(Probability, self).__mul__(other)
+    res = super(ProbabilityValue, self).__mul__(other)
     return self.__class__(min(1, max(res, 0)))
 
   def __truediv__(self, other: float):
-    res = super(Probability, self).__truediv__(other)
+    res = super(ProbabilityValue, self).__truediv__(other)
     return self.__class__(min(1, max(res, 0)))
