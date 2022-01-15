@@ -18,6 +18,13 @@ def calculate_event_probability(
   obs_status = event_observation_status(event, observations)
   if obs_status is not None:
     return Probability(obs_status)
+
+  # find relations targeting events
+  event_relations = find_relations_targeting_event(event, host)
+
+  # if no targeting relations -> return base event prob
+  if len(event_relations) == 0:
+    return event.independent_prob
   return Probability(0)
 
 

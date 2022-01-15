@@ -59,3 +59,18 @@ def test_calculate_event_probability__should_return_1(
   assert calculate_event_probability(
       disease_events[0], human_host, [Observation(disease_events[0], True)]
       ) == 1
+
+
+def test_calculate_event_probability__should_return_event_base_prob(
+    init_dataset, human_host: Host, symptom_events: List[Event], disease_events: List[Event]
+    ):
+  assert calculate_event_probability(symptom_events[0], human_host,
+                                     []) == symptom_events[0].independent_prob
+  assert calculate_event_probability(disease_events[0], human_host,
+                                     []) == disease_events[0].independent_prob
+  assert calculate_event_probability(
+      disease_events[0], human_host, [Observation(disease_events[1], True)]
+      ) == disease_events[0].independent_prob
+  assert calculate_event_probability(
+      symptom_events[0], human_host, [Observation(disease_events[1], True)]
+      ) == symptom_events[0].independent_prob

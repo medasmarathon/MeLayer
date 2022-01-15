@@ -3,11 +3,15 @@ from medLayer.core.interface import INode
 
 
 class Event(INode):
-  independent_prob: Probability
+  independent_prob: Probability = Probability(0)
 
   def __init__(self, name: str):
     super().__init__()
     self.name = name
+
+  def with_base_prob(self, prob: float):
+    self.independent_prob = Probability(prob)
+    return self
 
   def __key(self):
     return (self.name)

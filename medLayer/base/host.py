@@ -7,3 +7,4 @@ class Host(IHost):
     super().__init__()
     self.name = name
     self.layers = []
+    self.interactions = []
