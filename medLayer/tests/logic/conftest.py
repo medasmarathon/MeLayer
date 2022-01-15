@@ -1,9 +1,17 @@
+from enum import Enum
 from typing import List
 import pytest
 
 from medLayer.base.conceptlayer import ConceptLayer
 from medLayer.base.event import Event
 from medLayer.base.host import Host
+from medLayer.base.interactions.coexisting_relation import CoexistingRelation
+from medLayer.core.datatype.influencedirection import InfluenceDirection
+
+
+class LayerOrder(Enum):
+  SYMPTOMS = 1
+  DISEASE = 2
 
 
 @pytest.fixture(autouse=True)
@@ -13,12 +21,12 @@ def human_host():
 
 @pytest.fixture(autouse=True)
 def symptoms_layer():
-  return ConceptLayer('Symptoms', 1)
+  return ConceptLayer('Symptoms', LayerOrder.SYMPTOMS)
 
 
 @pytest.fixture(autouse=True)
 def disease_layer():
-  return ConceptLayer('Disease', 2)
+  return ConceptLayer('Disease', LayerOrder.DISEASE)
 
 
 @pytest.fixture(autouse=True)
@@ -53,3 +61,15 @@ def add_events_to_layers(
 @pytest.fixture
 def init_dataset(add_layers_to_host, add_events_to_layers):
   pass
+
+
+@pytest.fixture
+def init_dataset_with_relations(
+    add_layers_to_host, add_events_to_layers, human_host: Host, symptom_events: List[Event],
+    disease_events: List[Event]
+    ):
+  human_host.interactions = [
+      CoexistingRelation(disease_events[0], disease_events[1]).with_direction(
+          InfluenceDirection(LayerOrder.DISEASE, LayerOrder.DISEASE)
+          )
+      ]

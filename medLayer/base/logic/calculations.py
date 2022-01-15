@@ -1,21 +1,23 @@
-from typing import List, Union
+from typing import Dict, List, TypedDict, Union
 from medLayer.base.event import Event
 from medLayer.base.host import Host
+from medLayer.base.interactions.coexisting_relation import CoexistingRelation
 from medLayer.base.observations import Observation
 from medLayer.core.datatype.probability import Probability
 from medLayer.core.interface.ilayer import ILayer
+from medLayer.core.interface.irelation import IRelation
 
 
 def calculate_event_probability(
     event: Event, host: Host, observations: List[Observation]
     ) -> Probability:
+  event_conceptLayer = find_layer_of_event(host, event)
+  if event_conceptLayer is None:
+    return Probability(0)
+
   obs_status = event_observation_status(event, observations)
   if obs_status is not None:
     return Probability(obs_status)
-
-  conceptLayer = find_layer_of_event(host, event)
-  if conceptLayer is None:
-    return Probability(0)
   return Probability(0)
 
 
@@ -34,3 +36,13 @@ def find_layer_of_event(host: Host, event: Event) -> Union[ILayer, None]:
     except ValueError:
       continue
   return None
+
+
+def find_relations_targeting_event(event: Event, host: Host) -> Union[None, List[IRelation]]:
+  relations = []
+  for relation in host.interactions:
+    if relation.to_node == event:
+      relations.append(relation)
+    if type(relation) is CoexistingRelation and relation.fro_node == event:
+      relations.append(relation)
+  return relations

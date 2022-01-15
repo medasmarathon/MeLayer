@@ -2,7 +2,7 @@
 build-backend = "setuptools.build_meta:__legacy__"
 requires = ["setuptools", "wheel"]
 [tool.pytest.ini_options]
-addopts = "-s" # for print statement output to console
+addopts = "-vs" # for print statement output to console
 minversion = "6.0" 
 testpaths = [
   "medLayer/tests",
