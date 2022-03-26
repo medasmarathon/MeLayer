@@ -3,9 +3,9 @@ from medLayer.base.event import Event
 from medLayer.base.host import Host
 from medLayer.base.interactions.coexisting_relation import CoexistingRelation
 from medLayer.base.observations import Observation
-from medLayer.core.datatype.probabilityvalue import ProbabilityValue
 from medLayer.core.interface.ilayer import ILayer
 from medLayer.core.interface.irelation import IRelation
+from probnode.datatype.probabilityvalue import ProbabilityValue
 
 
 def calculate_event_probability(
