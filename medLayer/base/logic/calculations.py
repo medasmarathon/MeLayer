@@ -26,7 +26,7 @@ def calculate_event_probability(
 
   # if no targeting relations -> return base event prob
   if len(event_relations) == 0:
-    return event.independent_prob
+    return host.base_probability_of[event]
   return ProbabilityValue(0)
 
 
