@@ -13,11 +13,11 @@ human.layers = [disease, symptom]
 
 fever = Event('Fever')
 pain = Event('Pain')
-symptom.nodes.append(fever)
-symptom.nodes.append(pain)
+symptom.representations.append(fever)
+symptom.representations.append(pain)
 
 fuo = Event("FUO")
-disease.nodes.append(fuo)
+disease.representations.append(fuo)
 
 impossible_event = Event("Impossible")
 

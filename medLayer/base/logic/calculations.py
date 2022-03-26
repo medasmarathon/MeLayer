@@ -40,7 +40,7 @@ def event_observation_status(event: Event, observations: List[Observation]) -> U
 def find_layer_of_event(host: Host, event: Event) -> Union[ILayer, None]:
   for layer in host.layers:
     try:
-      index = layer.nodes.index(event)
+      index = layer.representations.index(event)
       return layer
     except ValueError:
       continue

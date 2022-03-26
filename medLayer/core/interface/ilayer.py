@@ -5,7 +5,7 @@ from typing import List
 class ILayer:
   name: str
   order: int
-  nodes: List[INode]
+  representations: List[INode]
 
   def __key(self):
     return (self.name)

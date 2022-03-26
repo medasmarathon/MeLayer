@@ -54,8 +54,8 @@ def add_events_to_layers(
     symptoms_layer: ConceptLayer, disease_layer: ConceptLayer, symptom_events: List[Event],
     disease_events: List[Event]
     ):
-  symptoms_layer.nodes = symptom_events
-  disease_layer.nodes = disease_events
+  symptoms_layer.representations = symptom_events
+  disease_layer.representations = disease_events
 
 
 @pytest.fixture

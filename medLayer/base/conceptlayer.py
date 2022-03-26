@@ -7,7 +7,7 @@ class ConceptLayer(ILayer):
     super().__init__()
     self.name = name
     self.order = order
-    self.nodes = []
+    self.representations = []
 
   def __key(self):
     return (self.name)
