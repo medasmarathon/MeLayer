@@ -23,7 +23,7 @@ class EventToProbabilityDictionary(MutableMapping):
   def __delitem__(self, key):
     self._data.__delitem__(key)
 
-  def __getitem__(self, key):
+  def __getitem__(self, key) -> ProbabilityValue:
     try:
       return self._data.__getitem__(key)
     except KeyError:
@@ -34,10 +34,13 @@ class EventToProbabilityDictionary(MutableMapping):
 
 
 class Host(IHost):
-  base_probability_of: EventToProbabilityDictionary = EventToProbabilityDictionary()
+  base_probabilities_of_events: EventToProbabilityDictionary = EventToProbabilityDictionary()
 
   def __init__(self, name: str):
     super().__init__()
     self.name = name
     self.layers = []
     self.interactions = []
+
+  def base_probability_of(self, event: Event) -> ProbabilityValue:
+    return self.base_probabilities_of_events[event]

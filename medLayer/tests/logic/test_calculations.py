@@ -64,13 +64,13 @@ def test_calculate_event_probability__should_return_1(
 def test_calculate_event_probability__should_return_event_base_prob(
     init_dataset, human_host: Host, symptom_events: List[Event], disease_events: List[Event]
     ):
-  assert calculate_event_probability(symptom_events[0], human_host,
-                                     []) == human_host.base_probability_of[symptom_events[0]]
-  assert calculate_event_probability(disease_events[0], human_host,
-                                     []) == human_host.base_probability_of[disease_events[0]]
+  assert calculate_event_probability(symptom_events[0], human_host, []
+                                     ) == human_host.base_probabilities_of_events[symptom_events[0]]
+  assert calculate_event_probability(disease_events[0], human_host, []
+                                     ) == human_host.base_probabilities_of_events[disease_events[0]]
   assert calculate_event_probability(
       disease_events[0], human_host, [Observation(disease_events[1], True)]
-      ) == human_host.base_probability_of[disease_events[0]]
+      ) == human_host.base_probabilities_of_events[disease_events[0]]
   assert calculate_event_probability(
       symptom_events[0], human_host, [Observation(disease_events[1], True)]
-      ) == human_host.base_probability_of[symptom_events[0]]
+      ) == human_host.base_probabilities_of_events[symptom_events[0]]
